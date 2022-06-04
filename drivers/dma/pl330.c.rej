@@ -1,0 +1,19 @@
+--- drivers/dma/pl330.c
++++ drivers/dma/pl330.c
+@@ -973,10 +974,13 @@ static void _stop(struct pl330_thread *thrd)
+ 
+ 	_emit_KILL(0, insn);
+ 
+-	/* Stop generating interrupts for SEV */
+-	writel(readl(regs + INTEN) & ~(1 << thrd->ev), regs + INTEN);
+-
+ 	_execute_DBGINSN(thrd, insn, is_manager(thrd));
++
++	/* clear the event */
++	if (inten & (1 << thrd->ev))
++		writel(1 << thrd->ev, regs + INTCLR);
++	/* Stop generating interrupts for SEV */
++	writel(inten & ~(1 << thrd->ev), regs + INTEN);
+ }
+ 
+ /* Start doing req 'idx' of thread 'thrd' */

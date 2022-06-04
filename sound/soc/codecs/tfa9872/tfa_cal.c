@@ -103,13 +103,8 @@ static ssize_t tfa_cal_rdc_show(struct device *dev,
 			continue;
 		}
 
-		if (idx == 0)
-			snprintf(cal_done_string,
-				FILESIZE_RDC_CAL, "%d", value);
-		else
-			snprintf(cal_done_string,
-				FILESIZE_RDC_CAL, "%s %d",
-				cal_done_string, value);
+		snprintf(cal_done_string,
+			FILESIZE_RDC_CAL, "%d", value);
 	}
 
 	ret = tfa_cal_write_file(FILEPATH_RDC_CAL,
@@ -172,13 +167,8 @@ static ssize_t tfa_cal_temp_show(struct device *dev,
 			continue;
 		}
 
-		if (idx == 0)
-			snprintf(cal_done_string,
-				FILESIZE_TEMP_CAL, "%d", value);
-		else
-			snprintf(cal_done_string,
-				FILESIZE_TEMP_CAL, "%s %d",
-				cal_done_string, value);
+		snprintf(cal_done_string,
+			FILESIZE_TEMP_CAL, "%d", value);
 	}
 
 	if (value == value_file) {
@@ -285,13 +275,8 @@ static ssize_t tfa_cal_status_store(struct device *dev,
 		}
 		cur_status = 0; /* done - changed to inactive */
 
-		if (idx == 0)
-			snprintf(cal_done_string,
-				FILESIZE_RDC_CAL, "%d", value);
-		else
-			snprintf(cal_done_string,
-				FILESIZE_RDC_CAL, "%s %d",
-				cal_done_string, value);
+		snprintf(cal_done_string,
+			FILESIZE_RDC_CAL, "%d", value);
 
 		/* read temp to store */
 		ret = tfa_read_cal_temp(idx, &value2);
@@ -306,13 +291,8 @@ static ssize_t tfa_cal_status_store(struct device *dev,
 			return -EINVAL;
 		}
 
-		if (idx == 0)
-			snprintf(cal_done_string2,
-				FILESIZE_TEMP_CAL, "%d", value2);
-		else
-			snprintf(cal_done_string2,
-				FILESIZE_TEMP_CAL, "%s %d",
-				cal_done_string2, value2);
+		snprintf(cal_done_string2,
+			FILESIZE_TEMP_CAL, "%d", value2);
 	}
 
 	ret = tfa_cal_write_file(FILEPATH_RDC_CAL,

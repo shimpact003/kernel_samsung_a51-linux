@@ -1,0 +1,11 @@
+--- fs/f2fs/segment.c
++++ fs/f2fs/segment.c
+@@ -495,7 +495,7 @@ static int submit_flush_wait(struct f2fs_sb_info *sbi)
+ 	int ret = __submit_flush_wait(sbi, sbi->sb->s_bdev);
+ 	int i;
+ 
+-	if (!sbi->s_ndevs || ret)
++	if (!f2fs_is_multi_device(sbi) || ret)
+ 		return ret;
+ 
+ 	for (i = 1; i < sbi->s_ndevs; i++) {

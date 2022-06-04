@@ -287,13 +287,8 @@ static ssize_t tfa_data_maxx_show(struct device *dev,
 			continue;
 		}
 
-		if (idx == 0)
-			snprintf(read_string,
-				FILESIZE_LOG, "%d", value);
-		else
-			snprintf(read_string,
-				FILESIZE_LOG, "%s %d",
-				read_string, value);
+		snprintf(read_string,
+			FILESIZE_LOG, "%d", value);
 	}
 
 	pr_info("%s: %s\n", __func__, read_string);
@@ -346,13 +341,8 @@ static ssize_t tfa_data_maxt_show(struct device *dev,
 			continue;
 		}
 
-		if (idx == 0)
-			snprintf(read_string,
-				FILESIZE_LOG, "%d", value);
-		else
-			snprintf(read_string,
-				FILESIZE_LOG, "%s %d",
-				read_string, value);
+		snprintf(read_string,
+			FILESIZE_LOG, "%d", value);
 	}
 
 	pr_info("%s: %s\n", __func__, read_string);
@@ -405,13 +395,8 @@ static ssize_t tfa_count_overxmax_show(struct device *dev,
 			continue;
 		}
 
-		if (idx == 0)
-			snprintf(read_string,
-				FILESIZE_LOG, "%d", value);
-		else
-			snprintf(read_string,
-				FILESIZE_LOG, "%s %d",
-				read_string, value);
+		snprintf(read_string,
+			FILESIZE_LOG, "%d", value);
 	}
 
 	pr_info("%s: %s\n", __func__, read_string);
@@ -464,13 +449,8 @@ static ssize_t tfa_count_overtmax_show(struct device *dev,
 			continue;
 		}
 
-		if (idx == 0)
-			snprintf(read_string,
-				FILESIZE_LOG, "%d", value);
-		else
-			snprintf(read_string,
-				FILESIZE_LOG, "%s %d",
-				read_string, value);
+		snprintf(read_string,
+			FILESIZE_LOG, "%d", value);
 	}
 
 	pr_info("%s: %s\n", __func__, read_string);
@@ -524,13 +504,8 @@ static ssize_t tfa_data_show(struct device *dev,
 				continue;
 			}
 
-			if (idx == 0)
-				snprintf(read_string,
-					FILESIZE_LOG, "%d", value[i]);
-			else
-				snprintf(read_string,
-					FILESIZE_LOG, "%s %d",
-					read_string, value[i]);
+			snprintf(read_string,
+				FILESIZE_LOG, "%d", value[i]);
 		}
 
 		pr_info("%s: %s\n", __func__, read_string);
@@ -647,14 +622,9 @@ static ssize_t tfa_log_store(struct device *dev,
 
 			cur_status = 0; /* done - changed to inactive */
 
-			if (idx == 0)
-				snprintf(read_string,
-					FILESIZE_LOG, "%d",
-					blackbox[i].prev_value);
-			else
-				snprintf(read_string,
-					FILESIZE_LOG, "%s %d",
-					read_string, blackbox[i].prev_value);
+			snprintf(read_string,
+				FILESIZE_LOG, "%d",
+				blackbox[i].prev_value);
 		}
 
 		pr_info("%s: %s\n", __func__, read_string);
